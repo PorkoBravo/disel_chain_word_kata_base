@@ -1,2 +1,2 @@
-Hola soy un archivo de prueba! Tildes: á y eñes.
+Hola soy un archivo de prueba! Tildes: y y eñes.
 Segunda línea
