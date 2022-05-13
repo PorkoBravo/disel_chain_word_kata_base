@@ -8,6 +8,6 @@ import java.util.stream.Stream;
 public interface FileReader {
 
 	String readFile(InputStream inputStream);
-	Stream<String> readFileAsStream(Path path, Charset charset);
+	Stream<String> readFileAsStream(Path path);
 
 }

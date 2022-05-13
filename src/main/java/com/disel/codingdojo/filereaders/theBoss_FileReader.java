@@ -20,17 +20,17 @@ public class theBoss_FileReader implements FileReader {
 		try {
 			return this.readFromInputStream(inputStream);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error reading file");
 			return null;
 		}
 	}
 	
 	@Override
-	public Stream<String> readFileAsStream(Path path, Charset charset) {
+	public Stream<String> readFileAsStream(Path path) {
 		try {
-			return Files.lines(path,charset);
+			return Files.lines(path, Charset.forName("ISO-8859-1"));
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error reading file");
 			return null;
 		}
 	}
@@ -40,7 +40,7 @@ public class theBoss_FileReader implements FileReader {
 			throw new IOException();
 		}
 		StringBuilder resultStringBuilder = new StringBuilder();
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream, "ISO-8859-1" ))) {
 			String line;
 			while ((line = br.readLine()) != null) {
 				resultStringBuilder.append(line).append("\n");

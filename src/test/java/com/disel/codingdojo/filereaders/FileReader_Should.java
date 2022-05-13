@@ -36,7 +36,7 @@ public class FileReader_Should {
 	    String expected = "Hola soy un archivo de prueba! Tildes: á y eñes.\nSegunda línea";
 
 	    Path path = Paths.get(getClass().getClassLoader().getResource("test_file.txt").toURI());
-	    Stream<String> fileStream = fileReader.readFileAsStream(path, Charset.forName("Cp1252"));
+	    Stream<String> fileStream = fileReader.readFileAsStream(path);
 	    String content = fileStream.collect(Collectors.joining("\n"));
 	    
 	    assertEquals(expected, content);
