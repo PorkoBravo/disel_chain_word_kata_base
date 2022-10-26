@@ -4,15 +4,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class theBoss_FileReader implements FileReader {
+	
+	public final static String DICTIONARY_FILE = "diccionario.txt";
 	
 
 	@Override
@@ -48,5 +52,17 @@ public class theBoss_FileReader implements FileReader {
 			br.close();
 		}
 		return resultStringBuilder.toString();
+	}
+
+	@Override
+	public Stream<String> readDictionary() {
+		Stream<String> dictionary = Stream.empty();
+		try {
+			Path path = Paths.get(getClass().getClassLoader().getResource(DICTIONARY_FILE).toURI());
+			dictionary = this.readFileAsStream(path);
+		} catch (URISyntaxException e) {
+			System.out.println("Error reading file: "+e);
+		}
+		return dictionary;
 	}
 }

@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 public interface FileReader {
 
+	Stream<String> readDictionary();
 	String readFile(InputStream inputStream);
 	Stream<String> readFileAsStream(Path path);
 
